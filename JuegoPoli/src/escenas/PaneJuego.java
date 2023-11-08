@@ -1,8 +1,9 @@
 package escenas;
 
+import componentes.BackgroundEscena;
 import componentes.BackgroundSprites;
 import componentes.Tipografia;
-import engine.Game;
+import motor.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -14,30 +15,30 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import motor.Juego;
 
-public class PaneJuego {
-	// **PARAMETRO DE LA CLASE SCENE (VENTANA)
-	final Stage primarystage = new Stage();
-	final Juego juego = new Juego();// *METODOS Y PROPIEDADES DE JUEGO
-	// *BACKGROUNDS DE LOS OBJETOS QUE TENDREMOS EN EL JUEGO(IMAGENES DEL JUEGO)
+//**PANEJUEGO ES EL CONTENEDOR QUE CONTENDRA EL JUEGO  Y SUS CONFIGURACIONES (PARTE GRAFICA)**//
+public class PaneJuego extends BackgroundEscena {
+
+	// **CREAMOS UN NUEVO OBJETO VENTANA DE LA CLASE STAGE
+	final Stage primarystage;
+	// **CREAMOS UN OBJETO CON METODOS Y PROPIEDADES DE LA CLASE JUEGO
+	final Juego juego;
+	// *BACKGROUNDS DE LOS OBJETOS QUE TENDREMOS EN EL PANE DEL JUEGO
 	final Background cespedBackground = BackgroundSprites.spriteBackground(new Image("/sprites/FondoCesped.jpg"));
 	final Background cajaBackground = BackgroundSprites.spriteBackground(new Image("Caja.png"));
 	final Background bloqueBackground = BackgroundSprites.spriteBackground(new Image("Bloque.png"));
 	final Background jugadorBackground = BackgroundSprites.spriteBackground(new Image("man.png"));
-	// **CREAMOS UN ATRIBUTO PARA UN CONTENEDOR STACKPANE SOLO PARA EL JUGADOR
+	// **CREAMOS UN ATRIBUTO PARA UN CONTENEDOR STACKPANE PARA SUPERPONER NODOS
 	final StackPane jugadorSprite = crearJugadorSprite();
-	
-	
-	
-	//**NUEVOS OBJETOS
-	//**CREA CONTENEDOR QUE APILA LOS NODOS BIDIMENSAIONALMENTE EN FILAS Y COLUMNAS
+
+	// **CREA CONTENEDOR QUE APILA LOS NODOS BIDIMENSAIONALMENTE EN FILAS Y COLUMNAS
 	GridPane boardGrid = new GridPane();
+	// **CREA CONTENEDOR PARA SUPERPONER NODOS
 	StackPane canvasStack = new StackPane();
-	//**CREA TEXTO QUE ESTARA DENTRO DEL CONTENDOR DE LA CLASE TIPOGRAFIA
+	// **CREA TEXTO QUE ESTARA DENTRO DEL CONTENDOR DE LA CLASE TIPOGRAFIA
 	Tipografia nivelTexto = new Tipografia("Nivel", 50, Color.WHITE);
 	Tipografia tiempoTexto = new Tipografia("00:00", 50, Color.WHITE);
-	Tipografia previaTiempoTexto = new Tipografia("", 200, Color.rgb(255, 0, 0), 800); 
+	Tipografia previaTiempoTexto = new Tipografia("", 200, Color.rgb(255, 0, 0), 800);
 
 	// **METODO PARA CREAR CONTENEDORES DE JUGADOR Y BACKGROUND
 	private StackPane crearJugadorSprite() {
@@ -55,28 +56,49 @@ public class PaneJuego {
 
 		return jugadorSprite;
 	}
-	
+
+	// **CONSTRUCTOR**//
 	PaneJuego(Stage primaryStage) {
-	    this.primarystage = primaryStage;
-	    this.juego = new Juego();
+		// **INICIALIZAMOS LA VENTANA Y EL PARAMETRO JUEGO
+		this.primarystage = primaryStage;
+		juego = new Juego();
 
+		// ****//
+		nivelTexto.setText("Level " + juego.getCurrentLevelNum());
 
-	    nivelTexto.setText("Level " + juego.getCurrentLevelNum());
-
-	    var StatusBar = new BorderPane();
-	    StatusBar.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0, .2), null, null)));
-	    StatusBar.setPadding(new Insets(15));
-	    StatusBar.setMaxHeight(60);
-	    StatusBar.setLeft(levelText);
-	    StatusBar.setRight(timerText);
+		// **CREAR UN NUEVO CONTENEDOR PARA ALMACENAR EL NIVEL Y EL TIEMPO
+		var ContNivelTemp = new BorderPane();
+		// **DEFINIMOS EL BACKGROUND DEL CONTENEDOR
+		ContNivelTemp.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0, .2), null, null)));
+        //**DEFINIR EL ESPACIADO DEL CONTENEDOR EN TODAS LAS DIRECCIONES EN 15PX
+		ContNivelTemp.setPadding(new Insets(15));
+		//**ALTURA MAXIMA EN 60 PX DEL CONTENEDOR
+		ContNivelTemp.setMaxHeight(60);
+		//**ESTABLCEMOS EL NODO AL LADO IZQUIERDO (NIVEL)
+		ContNivelTemp.setLeft(nivelTexto);
+		//**ESTABLCEMOS EL NODO AL LADO IZQUIERDO (TIEMPO)
+		ContNivelTemp.setRight(tiempoTexto);
 
 //	        boardGrid.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0, .2), null, null)));
 
-	    canvasStack.setAlignment(Pos.CENTER);
-	    canvasStack.getChildren().addAll(boardGrid, previewTimerText);
-	    this.setTop(StatusBar);
-	    this.setCenter(canvasStack);
+		
+		//**CONTENEDOR QUE SUPERPONE NODOS ALINEADO AL CENTRO
+		canvasStack.setAlignment(Pos.CENTER);
+		//**AGREGAMOS NODOS (CONTENEDOR BIDIMENSIONAL Y PREVIATIEMPO)
+		canvasStack.getChildren().addAll(boardGrid, previaTiempoTexto);
+		
+		
+		//**POR HERENCIA DE BACKGROUND ESCENA QUE HEREDA BORDERPANE
+		//**POCISIONAMOS EL CONTENEDOR PARTE SUPERIOR
+		this.setTop(ContNivelTemp);
+		//**POCISIONAMOS PARTE CENTRAL
+		this.setCenter(canvasStack);
+	
+//****//
+		juego.initGame(1);
+	}
 
-	    game.initGame(1);
-	  }
+	
+
+	
 }
