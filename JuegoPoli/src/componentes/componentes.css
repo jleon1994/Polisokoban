@@ -1,0 +1,59 @@
+.backgroundescena{
+	-fx-background-image: url('../sprites/FondoMenuPrincipal.jpg');
+}
+
+.textomainprincipal{
+    -fx-color: rgb(30.0,180.0,220.0);
+    -fx-font-size: 45.0px; 
+    -fx-font-family: Open-Sans; 
+    -fx-text-fill: rgb(30.0,180.0,220.0); 
+    -fx-font-weight: bold; 
+    -fx-padding: 10.0px;
+    -fx-font-weight: 800;
+   
+
+	
+}
+
+.boton {
+    -fx-background-color: rgb(30.0,180.0,220.0); 
+    -fx-text-fill: rgb(28.0,52.0,91.0);
+    -fx-font-family: Open-Sans; 
+    -fx-font-weight:bold;
+    -fx-border-color: rgb(30.0,180.0,220.0);
+    -fx-border-width:1.0,5.0px;
+    -fx-padding: 5.0px 5.0px; 
+    -fx-min-width:200.0px;
+    -fx-min-height:50.0px;
+    -fx-cursor: hand;
+    -fx-border-radius: 200.0px;
+    -fx-font-size:16.0;  
+}
+
+
+.boton:hover {
+    -fx-background-color: rgb(28.0,52.0,91.0); 
+    -fx-text-fill: white;
+    -fx-font-family: Open-Sans; 
+    -fx-font-weight:bold;
+    -fx-border-color: rgb(28.0,52.0,91.0);
+    -fx-border-width:1.0,5.0px;
+    -fx-padding: 5.0px 5.0px; 
+    -fx-min-width:200.0px;
+    -fx-min-height:50.0px;
+    -fx-cursor: hand;
+    -fx-border-radius: 100.0px;
+    -fx-font-size:16.0;  
+    
+}
+
+
+.boton:pressed {
+     
+}
+
+
+
+
+
+
