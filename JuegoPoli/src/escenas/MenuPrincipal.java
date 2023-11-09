@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 
 
+
 //HERENCIA: SUBCLASE DE BACKGROUNDESCENA PARA HEREDAR LA PROPIEDAD DEL BORDERPANE
 public class MenuPrincipal extends BackgroundEscena {
 
@@ -38,11 +39,16 @@ public class MenuPrincipal extends BackgroundEscena {
 		start.setOnAction(e -> {
 			primaryStage.setScene(EscenarioJuego.getEscena(primaryStage));
 		});
+		
+		var nosotros = new Botones("NOSOTROS").getBoton();
+		nosotros.setOnAction(e -> {
+		      primaryStage.getScene().setRoot(new Nosotros(primaryStage));
+		    });
 
 		contenedor.getChildren().addAll(
 				new Logos(new Image(getClass().getResourceAsStream("/sprites/LogoPoli.png"))).getLogoPoli(),
 				new Logos(new Image(getClass().getResourceAsStream("/sprites/man.png"))).getimageMan(), textoMain,
-				start, new Botones("REGLAS DEL JUEGO").getBoton(), new Botones("NOSOTROS").getBoton());
+				start, nosotros, new Botones("NOSOTROS").getBoton());
 
 	}
 
