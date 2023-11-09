@@ -10,6 +10,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
+
 //HERENCIA: SUBCLASE DE BACKGROUNDESCENA PARA HEREDAR LA PROPIEDAD DEL BORDERPANE
 public class MenuPrincipal extends BackgroundEscena {
 
@@ -31,10 +33,16 @@ public class MenuPrincipal extends BackgroundEscena {
 
 		contenedor.setAlignment(Pos.CENTER);
 
+		// **CREAMOS UN NUEVO BOTON Y ADICIONAMOS EL METODO GETBOTON PARA SU STILO CSS
+		var start = new Botones("START").getBoton();
+		start.setOnAction(e -> {
+			primaryStage.setScene(EscenarioJuego.getEscena(primaryStage));
+		});
+
 		contenedor.getChildren().addAll(
 				new Logos(new Image(getClass().getResourceAsStream("/sprites/LogoPoli.png"))).getLogoPoli(),
 				new Logos(new Image(getClass().getResourceAsStream("/sprites/man.png"))).getimageMan(), textoMain,
-				new Botones("START").getBoton(), new Botones("REGLAS DEL JUEGO").getBoton(),new Botones("NOSOTROS").getBoton());
+				start, new Botones("REGLAS DEL JUEGO").getBoton(), new Botones("NOSOTROS").getBoton());
 
 	}
 

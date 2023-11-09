@@ -1,5 +1,7 @@
 package motor;
 
-public class Caja {
-
+public class Caja extends Obstaculos {
+	Caja() {
+		super(TipoObstaculo.BOX, true, '#');
+	}
 }
