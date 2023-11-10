@@ -4,6 +4,7 @@ import componentes.BackgroundEscena;
 import componentes.BackgroundSprites;
 import componentes.Botones;
 import componentes.CajaDialogo;
+import componentes.Logos;
 import componentes.Tipografia;
 import motor.Board;
 import motor.Juego;
@@ -32,10 +33,10 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 	// **CREAMOS UN OBJETO CON METODOS Y PROPIEDADES DE LA CLASE JUEGO
 	final Juego juego;
 	// *BACKGROUNDS DE LOS OBJETOS QUE TENDREMOS EN EL PANE DEL JUEGO
-	final Background cespedBackground = BackgroundSprites.spriteBackground(new Image("/sprites/FondoCesped.jpg"));
-	final Background cajaBackground = BackgroundSprites.spriteBackground(new Image("/sprites/Caja.png"));
-	final Background bloqueBackground = BackgroundSprites.spriteBackground(new Image("/sprites/Bloque.png"));
-	final Background jugadorBackground = BackgroundSprites.spriteBackground(new Image("/sprites/man.png"));
+	final Background cespedBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/FondoCesped.jpg")));
+	final Background cajaBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/Caja.png")));
+	final Background bloqueBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/Bloque.png")));
+	final Background jugadorBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/man.png")));
 	// **CREAMOS UN ATRIBUTO PARA UN CONTENEDOR STACKPANE PARA SUPERPONER NODOS
 	final StackPane jugadorSprite = crearJugadorSprite();
 	boolean isBoardInitialized = false;

@@ -9,6 +9,9 @@ public class Logos {
 	private ImageView logoPoli;
 	private ImageView imageMan;
 	private ImageView fondoMenuPrincipal;
+	private ImageView imageBloque;
+	private ImageView imageCaja;
+	private ImageView fondoCesped;
 	
 	
 	
@@ -27,6 +30,13 @@ public class Logos {
 		fondoMenuPrincipal.setFitWidth(800);
 		fondoMenuPrincipal.setFitHeight(800);
 		
+		imageBloque = new ImageView(imagen);
+		
+		imageCaja = new ImageView(imagen);
+		
+		fondoCesped = new ImageView(imagen);
+		
+		
 		
 
 	}
@@ -41,6 +51,18 @@ public class Logos {
 	
 	public ImageView getfondoMenuPrincipal() {
 		return imageMan;
+	}
+	
+	public ImageView getimageBloque() {
+		return imageBloque;
+	}
+
+	public ImageView getimageCaja() {
+		return imageCaja;
+	}
+
+	public ImageView getfondoCesped() {
+		return fondoCesped;
 	}
 
 }

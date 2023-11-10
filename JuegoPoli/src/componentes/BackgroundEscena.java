@@ -16,8 +16,9 @@ public class BackgroundEscena extends BorderPane {
 		// *CREAMOS UN NUEVO BACKGROUND
 
 		this.setStyle("-fx-font-family: Arial");
-		this.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("/sprites/FondoMenuPrincipal.jpg")),
-				BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+		this.setBackground(new Background(new BackgroundImage(
+				new Image(getClass().getResourceAsStream("/sprites/FondoMenuPrincipal.jpg")), BackgroundRepeat.REPEAT,
+				BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 
 	}
 

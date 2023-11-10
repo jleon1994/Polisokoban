@@ -12,7 +12,7 @@ public class ColeccionNiveles {
 
 	public ColeccionNiveles() {
 		String projectFolderPath = ColeccionNiveles.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-		File folder = new File(projectFolderPath + "/level");
+		File folder = new File(projectFolderPath + "/niveles");
 		File[] files = folder.listFiles();
 
 		// Count .txt files
