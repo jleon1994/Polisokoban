@@ -11,6 +11,8 @@ public class Tipografia extends Text {
 	// **USAREMOS POLIMORFISMO PARA CREAR METODOS
 	// **METODOS PARA CREAR TEXTOS
 
+	
+	
 	// **CREA TEXTO QUE SOLICITA TEXTO Y EL VALOR FUENTE
 	public Tipografia(String label, int fontSize) {
 		super();

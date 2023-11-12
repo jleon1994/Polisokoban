@@ -23,8 +23,8 @@ public class Logos {
 		logoPoli.setFitHeight(75);
 		
 		imageMan = new ImageView(imagen);
-		imageMan.setFitWidth(170);
-		imageMan.setFitHeight(200);
+		imageMan.setFitWidth(110);
+		imageMan.setFitHeight(250);
 		
 		fondoMenuPrincipal = new ImageView(imagen);
 		fondoMenuPrincipal.setFitWidth(800);

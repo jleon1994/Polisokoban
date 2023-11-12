@@ -6,53 +6,67 @@ import componentes.Logos;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+//***************//
+//**--CLASE2**--//
+//**************//
 
-
-
-//HERENCIA: SUBCLASE DE BACKGROUNDESCENA PARA HEREDAR LA PROPIEDAD DEL BORDERPANE
+//**HERENCIA: SUBCLASE DE BACKGROUNDESCENA (CLASE3)
 public class MenuPrincipal extends BackgroundEscena {
-
-	// **ATRIBUTO DE LA CLASE VBox INSERTA NODOS DE MANERA VERTICAL
+	// **ATRIBUTO PRINCIPAL DE LA CLASE
 	private VBox contenedor;
 
-	// **CONTRUCTOR DE LA CLASE
+	// **CONSTRUCTOR DE LA CLASE(METODO1)
 	public MenuPrincipal(Stage primaryStage) {
 
-		var textoMain = new Text("POLISOKOBAN");
-		textoMain.setFill(Color.rgb(28, 52, 91));
-		textoMain.getStyleClass().add("textomainprincipal");
-		textoMain.setStroke(Color.BLACK);
-
-		contenedor = new VBox(10); // ESPACIADO ENTRE NODOS DE 10PX
-
-		contenedor.getStyleClass().add("backgroundescena");
-		contenedor.getStylesheets().add(getClass().getResource("/componentes/componentes.css").toExternalForm());
-
+		// **INICIALIZAMOS EL ATRIBUTO
+		// **AL OBJETO CREADO LE DAMOS ESTILO CSS
+		contenedor = new VBox(10);
 		contenedor.setAlignment(Pos.CENTER);
+		contenedor.getStylesheets().add(getClass().getResource("/componentes/componentes.css").toExternalForm());
+		contenedor.getStyleClass().add("backgroundescena");
 
-		// **CREAMOS UN NUEVO BOTON Y ADICIONAMOS EL METODO GETBOTON PARA SU STILO CSS
+		// **INSTANCIA: OBJETO BOTON (CLASE4)-LO DIRECCIONAMOS CON CLIK A
+		// ESCENARIOJUEGO(CLASE5)
 		var start = new Botones("START").getBoton();
 		start.setOnAction(e -> {
 			primaryStage.setScene(EscenarioJuego.getEscena(primaryStage));
 		});
-		
-		var nosotros = new Botones("NOSOTROS").getBoton();
-		nosotros.setOnAction(e -> {
-		      primaryStage.getScene().setRoot(new Nosotros(primaryStage));
-		    });
 
+		// **INSTANCIA: OBJETO BOTON (CLASE4)-LO DIRECCIONAMOS CON CLIK A
+		// NOSOTROS (CLASE6)
+		var reglasJuego = new Botones("REGLAS DEL JUEGO").getBoton();
+		reglasJuego.setOnAction(e -> {
+			primaryStage.getScene().setRoot(new Nosotros(primaryStage));
+		});
+
+		// **INSTANCIA: OBJETO BOTON (CLASE4)-LO DIRECCIONAMOS CON CLIK A
+		// NOSOTROS (CLASE7)
+		var nosotros = new Botones("NOSOTROS").getBoton();
+		reglasJuego.setOnAction(e -> {
+			primaryStage.getScene().setRoot(new Nosotros(primaryStage));
+		});
+
+		// **INSTANCIA: OBJETO TEXTO - ESTILOS CSS
+		var textoMain = new Text("POLISOKOBAN");
+		textoMain.getStyleClass().add("textomainprincipal");
+		
+		// **INSTANCIA: OBJETO TEXTO - ESTILOS CSS
+		var textosubMain = new Text("RETO LOGICO");
+		textosubMain.getStyleClass().add("textosubmainprincipal");
+		
+
+		// **ADICIONAMOS AL VBOX LOS OBJETOS(NODOS) QUE SALDRAN VERTICALES
 		contenedor.getChildren().addAll(
-				new Logos(new Image(getClass().getResourceAsStream("/sprites/LogoPoli.png"))).getLogoPoli(),
-				new Logos(new Image(getClass().getResourceAsStream("/sprites/man.png"))).getimageMan(), textoMain,
-				start, nosotros, new Botones("NOSOTROS").getBoton());
+				//new Logos(new Image(getClass().getResourceAsStream("/sprites/LogoPoli.png"))).getLogoPoli(),
+				new Logos(new Image(getClass().getResourceAsStream("/sprites/man2.png"))).getimageMan(), textoMain,textosubMain,
+				start, reglasJuego, nosotros);
 
 	}
 
-	// **METODO GETTER PARA HACER UNA COPIA DEL ATRIBUTO Y PODERLO USAR
+	// **METODO GETTER PARA RETORNAR EL ATRIBUTO (METODO2)
 	public VBox getContenedor() {
 		return contenedor;
 	}

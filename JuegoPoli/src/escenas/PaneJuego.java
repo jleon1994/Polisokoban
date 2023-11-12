@@ -36,7 +36,7 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 	final Background cespedBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/FondoCesped.jpg")));
 	final Background cajaBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/Caja.png")));
 	final Background bloqueBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/Bloque.png")));
-	final Background jugadorBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/man.png")));
+	final Background jugadorBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/man2.png")));
 	// **CREAMOS UN ATRIBUTO PARA UN CONTENEDOR STACKPANE PARA SUPERPONER NODOS
 	final StackPane jugadorSprite = crearJugadorSprite();
 	boolean isBoardInitialized = false;
@@ -242,9 +242,9 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 			canvasStack.getChildren().removeAll(dialogBox);
 		});
 
-		var menuBtn = new Botones("Main Menu");
+		var menuBtn = new Botones("Menu Principal").getBoton();
 		menuBtn.setOnAction(e -> {
-			primarystage.setScene(new Scene(new MenuPrincipal(primarystage), 800, 800));
+			primarystage.setScene(new Scene(new MenuPrincipal(primarystage).getContenedor(), 800, 800));
 		});
 
 		dialogBox.content.getChildren().addAll(nextLevelBtn, menuBtn);

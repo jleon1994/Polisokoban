@@ -2,23 +2,30 @@ package componentes;
 
 import javafx.scene.control.Button;
 
-public class Botones extends Button{
-	
-	// *PARAMETRO DE LA CLASE MENUBOTON
-		private Button Boton;
+//***************//
+//**--CLASE4**--//
+//**************//
 
-		// **CONSTRUCTOR
-		public Botones (String label) {
-			super(label);
-			Boton = new Button(label);
-			Boton.getStylesheets().add(getClass().getResource("/componentes/componentes.css").toExternalForm());
-			Boton.getStyleClass().add("boton");
+//**HERENCIA: SUBCLASE DE LA CLASE BUTTON JAVAFX
+public class Botones extends Button {
 
-		}
+	// **ATRIBUTO DE LA CLASE BOTONES
+	private Button Boton;
 
-		// **METODO GET PARA RETURN DE LAS PROPIEDADES DEL PARAMETRO
-		public Button getBoton() {
-			return Boton;
-		}
+	// **CONSTRUCTOR DE LA CLASE BOTONES(METODO1)
+	public Botones(String label) {
+		super(label);
+
+		// **CREAMOS UN NUEVO OBJETO Y DAMOS ESTILO CON CSS
+		Boton = new Button(label);
+		Boton.getStylesheets().add(getClass().getResource("/componentes/componentes.css").toExternalForm());
+		Boton.getStyleClass().add("boton");
+
+	}
+
+	// **METODO GET PARA RETURN DE LAS PROPIEDADES DEL PARAMETRO(METODO2)
+	public Button getBoton() {
+		return Boton;
+	}
 
 }
