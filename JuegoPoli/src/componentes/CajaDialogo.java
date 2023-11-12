@@ -3,8 +3,6 @@ package componentes;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -13,17 +11,21 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class CajaDialogo extends VBox{
-	public VBox content = new VBox(10);
+	public VBox contenedor = new VBox(10);
 
 	  public CajaDialogo(String title, Color borderColor) {
-	    content.setAlignment(Pos.CENTER);
-	    content.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(10), null)));
-	    content.setPadding(new Insets(30));
-	    content.setBorder(
+	    contenedor.setAlignment(Pos.CENTER);
+	    //contenedor.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(10), null)));
+	    contenedor.getStylesheets().add(getClass().getResource("/componentes/componentes.css").toExternalForm());
+		contenedor.getStyleClass().add("backgroundescena");
+		
+	    
+	    contenedor.setPadding(new Insets(30));
+	    contenedor.setBorder(
 	      new Border(new BorderStroke(borderColor, BorderStrokeStyle.SOLID, new CornerRadii(10), BorderStroke.MEDIUM)));
-	    content.getChildren().add(new Tipografia(title, 50, 800));
+	    contenedor.getChildren().add(new Tipografia(title, 50, 800));
 
-	    this.getChildren().add(content);
+	    this.getChildren().add(contenedor);
 	    this.setAlignment(Pos.CENTER);
 	  }
 }

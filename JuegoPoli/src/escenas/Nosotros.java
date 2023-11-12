@@ -12,10 +12,10 @@ import javafx.stage.Stage;
 public class Nosotros extends BackgroundEscena {
 	Nosotros(Stage primaryStage) {
 		var container = new VBox(30);
-		var backBtn = new Botones("< Go Back");
+		var backBtn = new Botones("< Go Back").getBoton();
 
 		backBtn.setOnAction(e -> {
-			primaryStage.getScene().setRoot(new MenuPrincipal(primaryStage));
+			primaryStage.getScene().setRoot(new MenuPrincipal(primaryStage).getContenedor());
 		});
 
 		var TaskContainer = new VBox(10);

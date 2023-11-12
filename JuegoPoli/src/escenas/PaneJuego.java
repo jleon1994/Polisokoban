@@ -27,16 +27,20 @@ import javafx.stage.Stage;
 
 //**PANEJUEGO ES EL CONTENEDOR QUE CONTENDRA EL JUEGO  Y SUS CONFIGURACIONES (PARTE GRAFICA)**//
 public class PaneJuego extends BackgroundEscena implements PortalEventos {
-
+     
+	//*************//
+	//**ATRIBUTOS**//
+   //*************//	
+	
 	// **CREAMOS UN NUEVO OBJETO VENTANA DE LA CLASE STAGE
 	final Stage primarystage;
 	// **CREAMOS UN OBJETO CON METODOS Y PROPIEDADES DE LA CLASE JUEGO
 	final Juego juego;
 	// *BACKGROUNDS DE LOS OBJETOS QUE TENDREMOS EN EL PANE DEL JUEGO
 	final Background cespedBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/FondoCesped.jpg")));
-	final Background cajaBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/Caja.png")));
-	final Background bloqueBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/Bloque.png")));
-	final Background jugadorBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/man2.png")));
+	final Background cajaBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/Caja3.png")));
+	final Background bloqueBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/Bloque3.png")));
+	final Background jugadorBackground = BackgroundSprites.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/man3.png")));
 	// **CREAMOS UN ATRIBUTO PARA UN CONTENEDOR STACKPANE PARA SUPERPONER NODOS
 	final StackPane jugadorSprite = crearJugadorSprite();
 	boolean isBoardInitialized = false;
@@ -211,20 +215,20 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 
 	@Override
 	public void onLoseLevel() {
-		var dialogBox = new CajaDialogo("TIME IS OUT!", Color.RED);
+		var dialogBox = new CajaDialogo("SE AGOTO EL TIEMPO!", Color.RED);
 
-		var restartBtn = new Botones("Restart");
+		var restartBtn = new Botones("Restart").getBoton();
 		restartBtn.setOnAction(e -> {
 			juego.initGame(1);
 			canvasStack.getChildren().removeAll(dialogBox);
 		});
 
-		var menuBtn = new Botones("Main Menu");
+		var menuBtn = new Botones("MENU PRINCIPAL").getBoton();
 		menuBtn.setOnAction(e -> {
-			primarystage.setScene(new Scene(new MenuPrincipal(primarystage), 800, 800));
+			primarystage.setScene(new Scene(new MenuPrincipal(primarystage).getContenedor(), 800, 800));
 		});
 
-		dialogBox.content.getChildren().addAll(restartBtn, menuBtn);
+		dialogBox.contenedor.getChildren().addAll(restartBtn, menuBtn);
 
 		canvasStack.getChildren().add(dialogBox);
 	}
@@ -233,9 +237,9 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 	public void onFinishLevel(int levelNum) {
 		isBoardInitialized = false;
 
-		var dialogBox = new CajaDialogo("Well Done!", Color.GREENYELLOW);
+		var dialogBox = new CajaDialogo("MUY BIEN!", Color.BLACK);
 
-		var nextLevelBtn = new Botones("Next Level");
+		var nextLevelBtn = new Botones("SIGUIENTE NIVEL").getBoton();
 		nextLevelBtn.setOnAction(e -> {
 			juego.initGame(levelNum + 1);
 			nivelTexto.setText("Level " + juego.getCurrentLevelNum());
@@ -247,21 +251,21 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 			primarystage.setScene(new Scene(new MenuPrincipal(primarystage).getContenedor(), 800, 800));
 		});
 
-		dialogBox.content.getChildren().addAll(nextLevelBtn, menuBtn);
+		dialogBox.contenedor.getChildren().addAll(nextLevelBtn, menuBtn);
 		canvasStack.getChildren().add(dialogBox);
 	}
 
 	@Override
 	public void onFinishGame() {
-		var dialogBox = new CajaDialogo("Congratulations!", Color.LIGHTSKYBLUE);
-		var text = new Tipografia("You have completed all the levels!", 20);
-		var menuBtn = new Botones("Main Menu");
+		var dialogBox = new CajaDialogo("FELICITACIONES GANASTE", Color.BLACK);
+		var text = new Tipografia("LOGRASTE COMPLETAR TODOS LOS NIVELES!", 20);
+		var menuBtn = new Botones("MENU PRINCIPAL").getBoton();
 
 		menuBtn.setOnAction(e -> {
-			primarystage.setScene(new Scene(new MenuPrincipal(primarystage), 800, 800));
+			primarystage.setScene(new Scene(new MenuPrincipal(primarystage).getContenedor(), 800, 800));
 		});
 
-		dialogBox.content.getChildren().addAll(text, menuBtn);
+		dialogBox.contenedor.getChildren().addAll(text, menuBtn);
 		canvasStack.getChildren().add(dialogBox);
 	}
 

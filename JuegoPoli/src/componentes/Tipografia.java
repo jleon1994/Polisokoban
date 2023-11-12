@@ -16,27 +16,27 @@ public class Tipografia extends Text {
 	// **CREA TEXTO QUE SOLICITA TEXTO Y EL VALOR FUENTE
 	public Tipografia(String label, int fontSize) {
 		super();
-		this.setFont(Font.font("Arial", FontWeight.findByWeight(400), fontSize));
+		this.setFont(Font.font("Algerian", FontWeight.findByWeight(400), fontSize));
 
 	}
 
 	// **CREA TEXTO QUE SOLICITA COLOR DE LA FUENTE
 	public Tipografia(String label, int fontSize, Color color) {
 		super(label);
-		this.setFont(Font.font("Arial", FontWeight.findByWeight(400), fontSize));
+		this.setFont(Font.font("Algerian", FontWeight.findByWeight(400), fontSize));
 		this.setFill(color);
 	}
 
 	// **CREA TEXTO QUE SOLICITA EL PESO DE GROSURA DE LA FUENTE
 	public Tipografia(String label, int fontSize, int fontWeight) {
 		super(label);
-		this.setFont(Font.font("Arial", FontWeight.findByWeight(fontWeight), fontSize));
+		this.setFont(Font.font("Algerian", FontWeight.findByWeight(fontWeight), fontSize));
 	}
 
 	// **CREA TEXTO QUE SOLICITA EL PESO DE GROSURA Y COLOR DE LA FUENTE
 	public Tipografia(String label, int fontSize, Color color, int fontWeight) {
 		super(label);
-		this.setFont(Font.font("Arial", FontWeight.findByWeight(fontWeight), fontSize));
+		this.setFont(Font.font("Algerian", FontWeight.findByWeight(fontWeight), fontSize));
 		this.setFill(color);
 	}
 

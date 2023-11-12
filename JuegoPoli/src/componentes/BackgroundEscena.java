@@ -18,7 +18,7 @@ public class BackgroundEscena extends BorderPane {
 		// **CREAMOS UN NUEVO BACKGROUND(FUNCION PRINCIPAL)
 
 		this.setBackground(new Background(new BackgroundImage(
-				new Image(getClass().getResourceAsStream("/sprites/FondoMenuPrincipal.jpg")), BackgroundRepeat.REPEAT,
+				new Image(getClass().getResourceAsStream("/sprites/FondoCesped.jpg")), BackgroundRepeat.REPEAT,
 				BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 	}
 
