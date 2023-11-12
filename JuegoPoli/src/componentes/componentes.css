@@ -26,33 +26,33 @@
 
 .boton {
     -fx-background-image: url('../sprites/FondoBoton.png'); 
-    -fx-text-fill: WHITE;
+    -fx-text-fill: white;
     -fx-font-family: Algerian; 
-    -fx-font-weight:bold;
-    
+    -fx-font-weight:bold;   
     -fx-border-width:1.0,5.0px;
     -fx-padding: 5.0px 5.0px; 
     -fx-min-width:200.0px;
     -fx-min-height:50.0px;
     -fx-cursor: hand;
     -fx-border-radius: 200.0px;
-    -fx-font-size:16.0;  
+    -fx-font-size:16.0;
+    -fx-font-weight: 600;  
 }
 
 
 .boton:hover {
     -fx-background-image: url('../sprites/FondoCesped.jpg'); 
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-family: Algerian; 
-    -fx-font-weight:bold;
-  
+    -fx-font-weight:bold;  
     -fx-border-width:1.0,5.0px;
     -fx-padding: 5.0px 5.0px; 
     -fx-min-width:200.0px;
-    -fx-min-height:50.0px;
+    -fx-min-height:55.0px;
     -fx-cursor: hand;
     -fx-border-radius: 100.0px;
-    -fx-font-size:16.0;  
+    -fx-font-size:18.0;  
+    -fx-font-weight: 600;
     
 }
 
