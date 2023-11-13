@@ -5,7 +5,12 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+//***************//
+//**--CLASE1**--//
+//**************//
+
 public class Main extends Application {
+
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -16,6 +21,6 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-		
+
 	}
 }

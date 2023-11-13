@@ -17,7 +17,9 @@ public class Botones extends Button {
 		super(label);
 
 		// **CREAMOS UN NUEVO OBJETO Y DAMOS ESTILO CON CSS
+		//**INICIALIZAMOS EL ATRIBUTO BUTTON
 		Boton = new Button(label);
+		//**BRINDAMOS ESTILO CON CSS
 		Boton.getStylesheets().add(getClass().getResource("/componentes/componentes.css").toExternalForm());
 		Boton.getStyleClass().add("boton");
 

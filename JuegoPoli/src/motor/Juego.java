@@ -15,7 +15,7 @@ public class Juego {
 	private final char PLAYER_AVATAR = '█';
 
 	private final ColeccionNiveles LEVEL_COLLECTION = new ColeccionNiveles();
-	private int currentLevelNum = 1;
+	private int numeroNivel = 1;
 
 	private Timer CURRENT_LEVEL_TIMER;
 	private final int CURRENT_LEVEL_TIMER_PERIOD = 1000;
@@ -30,12 +30,12 @@ public class Juego {
 		Events = events;
 	}
 
-	public int getCurrentLevelNum() {
-		return currentLevelNum;
+	public int getNumeroNivel() {
+		return numeroNivel;
 	}
 
 	public void initGame(int levelNum) {
-		currentLevelNum = levelNum;
+		numeroNivel = levelNum;
 		Nivel currentLevel = LEVEL_COLLECTION.getLevel(levelNum);
 
 		targetBoard = Board.createBoard(currentLevel.getMap());
@@ -76,12 +76,12 @@ public class Juego {
 		MAIN_LOOP_TIMER.purge();
 
 		// Finish game after completing last level
-		if (currentLevelNum + 1 > LEVEL_COLLECTION.getLength()) {
+		if (numeroNivel + 1 > LEVEL_COLLECTION.getLength()) {
 			Events.onFinishGame();
 			return;
 		}
 
-		Events.onFinishLevel(currentLevelNum);
+		Events.onFinishLevel(numeroNivel);
 	}
 
 	public void loseCurrentLevel() {
@@ -101,7 +101,9 @@ public class Juego {
 		}
 	}
 
-	public void executeUserCommand(char input) {
+	
+	//**METODO DE COMANDO DE USUARIO QUE UTILIZARA PARA JUGAR(METODO)
+	public void ejecutaComandoUsuario(char input) {
 		if (currentLevelTimeLimit < 0)
 			return;
 

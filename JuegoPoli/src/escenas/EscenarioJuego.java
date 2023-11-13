@@ -16,19 +16,21 @@ public class EscenarioJuego {
 		var paneJuego = new PaneJuego(primaryStage);
 		var escena = new Scene(paneJuego, 800, 860);
 
+		// **UTILIZAMOS UN SWITCH PARA DEFINIR QUE PASA CUANDO OPRIMIMOS LA TECLAS DE
+		// CADA CASO
 		escena.setOnKeyPressed(event -> {
 			switch (event.getCode()) {
-			case W, UP -> paneJuego.executeUserCommand(event.isShiftDown() ? 'W' : 'w');
-			case S, DOWN -> paneJuego.executeUserCommand(event.isShiftDown() ? 'S' : 's');
-			case A, LEFT -> paneJuego.executeUserCommand(event.isShiftDown() ? 'A' : 'a');
-			case D, RIGHT -> paneJuego.executeUserCommand(event.isShiftDown() ? 'D' : 'd');
-			case E -> paneJuego.executeUserCommand('e');
+			case W, UP -> paneJuego.ejecutaComandoUsuario(event.isShiftDown() ? 'W' : 'w');
+			case S, DOWN -> paneJuego.ejecutaComandoUsuario(event.isShiftDown() ? 'S' : 's');
+			case A, LEFT -> paneJuego.ejecutaComandoUsuario(event.isShiftDown() ? 'A' : 'a');
+			case D, RIGHT -> paneJuego.ejecutaComandoUsuario(event.isShiftDown() ? 'D' : 'd');
+			case E -> paneJuego.ejecutaComandoUsuario('e');
 			}
 		});
 
 		escena.setOnKeyReleased(event -> {
 			switch (event.getCode()) {
-			case E -> paneJuego.executeUserCommand('E');
+			case E -> paneJuego.ejecutaComandoUsuario('E');
 			}
 		});
 
