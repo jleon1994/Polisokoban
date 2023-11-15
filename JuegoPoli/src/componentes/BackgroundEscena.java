@@ -5,7 +5,7 @@ import javafx.scene.layout.*;
 
 //***************//
 //**--CLASE3**--//
-//**************//
+//*************//
 
 //**HERENCIA: NUESTRA CLASE ES UNA SUBCLASE DE BORDERPANE Y HEREDA SUS PROPIEDADES
 //**EL OBJETIVO DE ESTA CLASE ES BRINDAR LA PROPIEDADES DEL FONDO DE LOS ESCENARIOS

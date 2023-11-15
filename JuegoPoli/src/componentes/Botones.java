@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 
 //***************//
 //**--CLASE4**--//
-//**************//
+//*************//
 
 //**HERENCIA: SUBCLASE DE LA CLASE BUTTON JAVAFX
 public class Botones extends Button {
@@ -25,7 +25,7 @@ public class Botones extends Button {
 
 	}
 
-	// **METODO GET PARA RETURN DE LAS PROPIEDADES DEL PARAMETRO(METODO2)
+	// **METODO GET PARA RETURNAS DE LAS PROPIEDADES DEL ATRIBUTO(METODO2)
 	public Button getBoton() {
 		return Boton;
 	}

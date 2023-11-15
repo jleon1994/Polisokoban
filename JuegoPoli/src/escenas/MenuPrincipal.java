@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 //***************//
 //**--CLASE2**--//
-//**************//
+//*************//
 
 //**HERENCIA: SUBCLASE DE BACKGROUNDESCENA (CLASE3)
 public class MenuPrincipal extends BackgroundEscena {
@@ -36,16 +36,16 @@ public class MenuPrincipal extends BackgroundEscena {
 		});
 
 		// **INSTANCIA: OBJETO BOTON (CLASE4)-LO DIRECCIONAMOS CON CLIK A
-		// NOSOTROS (CLASE6)
+		// REGLAS DE JUEGO (CLASE6)
 		var reglasJuego = new Botones("REGLAS DEL JUEGO").getBoton();
 		reglasJuego.setOnAction(e -> {
-			primaryStage.getScene().setRoot(new Nosotros(primaryStage));
+			primaryStage.getScene().setRoot(new ReglasJuego(primaryStage));
 		});
 
 		// **INSTANCIA: OBJETO BOTON (CLASE4)-LO DIRECCIONAMOS CON CLIK A
 		// NOSOTROS (CLASE7)
 		var nosotros = new Botones("NOSOTROS").getBoton();
-		reglasJuego.setOnAction(e -> {
+		nosotros.setOnAction(e -> {
 			primaryStage.getScene().setRoot(new Nosotros(primaryStage));
 		});
 

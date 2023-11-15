@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 //***************//
 //**--CLASE5**--//
-//**************//
+//*************//
 
 public class EscenarioJuego {
 
