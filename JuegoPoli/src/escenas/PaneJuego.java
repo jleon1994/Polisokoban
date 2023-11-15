@@ -27,18 +27,22 @@ import javafx.stage.Stage;
 
 //***************//
 //**--CLASE8**--//
-//**************//
+//*************//
 
 //**PANEJUEGO ES EL CONTENEDOR QUE CONTENDRA EL JUEGO  Y SUS CONFIGURACIONES (PARTE GRAFICA)**//
-//**HERENCIA: SUBCLASE DE BACKGROUNDESCENA PARA HEREDAD SUS PROPIEDADES
+//**HERENCIA: SUBCLASE DE BACKGROUNDESCENA PARA HEREDAr SUS PROPIEDADES DE FONDO 
 public class PaneJuego extends BackgroundEscena implements PortalEventos {
 
 	// *************//
 	// **ATRIBUTOS**//
 	// *************//
 
+	// **VENTANA (ATRIBUTO PRINCIPAL)**//
 	final Stage primarystage;
+	// **ATRIBUTO JUEGO DE LA CLASE JUEGO(CLASE9)
 	final Juego juego;
+	// **ATRIBUTOS BACKGROUND PARA DEFINIR EL FONDO DE LOS CONTENEDORES CON LAS
+	// IMAGENES
 	final Background cespedBackground = BackgroundSprites
 			.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/FondoCesped.jpg")));
 	final Background cajaBackground = BackgroundSprites
@@ -47,11 +51,18 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 			.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/Bloque3.png")));
 	final Background jugadorBackground = BackgroundSprites
 			.spriteBackground(new Image(getClass().getResourceAsStream("/sprites/man3.png")));
+	// **ATRIBUTO STACKPANE PARA SUPERPONER NODOS(CONTENEDORES DE IMAGENES)
 	final StackPane jugadorSprite = crearJugadorSprite();
-	boolean isBoardInitialized = false;
+	// **INICIALIZAMOS EL BOARD EN FALSO**//
+	boolean inicializarBoard = false;
 
+	// **ATRIBUTO QUE ORGANIZA EN CUADRICULAS**//
+	// **DIVIDEREMOS EL ESPACIO EN FILAS Y COLUMNAS
+	// **ASIGNAMOS UN NODO A UNA CELDA ESPECIFICA
 	GridPane boardGrid = new GridPane();
+	// **ATRIBUTO PARA APILAR NODOS SUPERPUESTOS EN UN CONTENEDOR
 	StackPane canvasStack = new StackPane();
+	// **ATRIBUTOS DE TEXTO DEL ESCENARIO LLAMADOS DE LA CLASE TIPOGRAFIA (CLASE10)
 	Tipografia nivelTexto = new Tipografia("Nivel", 40, Color.WHITE);
 	Tipografia tiempoTexto = new Tipografia("00:00", 40, Color.WHITE);
 	Tipografia previaTiempoTexto = new Tipografia("", 80, Color.GREEN, 800);
@@ -67,14 +78,12 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 		fondo.setBackground(cespedBackground);
 		jugador.setBackground(jugadorBackground);
 		// **ADICIONAMOS LOS NODOS (CONTENEDORES) A UN CONTENDOR DE SUPERPOCISION
-		// STACKPANE
+		// STACKPANE (PRIMERO FONDO Y ENCIMA SUPERPUESTO JUGADOR)
 		jugadorSprite.getChildren().addAll(fondo, jugador);
+		// **RETORNAMOS UN CONTENEDOR STACKPANE DE JUGADORSPRITE
 		return jugadorSprite;
 	}
 
-	
-	
-	
 	// **METODO CONSTRUCTOR DE LA CLASE PANEJUEGO(METODO2)
 	PaneJuego(Stage primaryStage) {
 		// **INICIALIZAMOS LA VENTANA Y EL ATRIBUTO JUEGO
@@ -93,57 +102,69 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 		ContNivelTemp.setMaxHeight(60);
 		// **ESTABLCEMOS EL NODO AL LADO IZQUIERDO (NIVEL)
 		ContNivelTemp.setLeft(nivelTexto);
-		// **ESTABLCEMOS EL NODO AL LADO IZQUIERDO (TIEMPO)
+		// **ESTABLCEMOS EL NODO AL LADO DERECHO (TIEMPO)
 		ContNivelTemp.setRight(tiempoTexto);
 		// **CONTENEDOR QUE SUPERPONE NODOS ALINEADO AL CENTRO
 		canvasStack.setAlignment(Pos.CENTER);
 		// **AGREGAMOS NODOS (CONTENEDOR BIDIMENSIONAL Y PREVIATIEMPO)
+		// **EL CONTADOR INICIAL ESTARA ENCIMA DEL BOARDGRID POR ESO SE SUPERPONE CON EL
+		// OBJETO CANVASSTACK
 		canvasStack.getChildren().addAll(boardGrid, previaTiempoTexto);
 		// **POR HERENCIA DE BACKGROUND ESCENA QUE HEREDA BORDERPANE
 		// **POCISIONAMOS EL CONTENEDOR PARTE SUPERIOR
 		this.setTop(ContNivelTemp);
 		// **POCISIONAMOS PARTE CENTRAL
 		this.setCenter(canvasStack);
-		// **LLAMAMOS EL METODO INITGAME DE JUEGO PARA INICIAR EL JUEGO
+		// **LLAMAMOS EL METODO INITGAME DE JUEGO PARA INICIAR EL JUEGO EN EL NIVEL 1
 		juego.initGame(1);
 	}
 
-	
-	
-	
-    //**METODO PARA CONTROLAR LOS COMANDOS QUE OPRIME EL USUARIO (METODO3)	
+	// **METODO PARA CONTROLAR LOS COMANDOS QUE OPRIME EL USUARIO (METODO3)
 	public void ejecutaComandoUsuario(char command) {
 		juego.ejecutaComandoUsuario(command);
 	}
 
-	
-	
-	
-	private void initializeBoardGrid(int rows, int columns) {
+	// **METODO PARA INICIALIZAR BOARD DE NODOS SUPERPUESTOS(METODO4)**//
+	// **TIENE DOS PARAMETROS QUE REPRESENTAN QUE REPRESENTAN EL NUMERO DE FILAS Y
+	// COLUMNAS EN EL ESCENARIO
+	private void inicializarBoardGrid(int filas, int columnas) {
+		// **BORRAMOS TODOS LOS NODOS DE CADA UNA DE LAS CUADRICULAS DEL ESCENARIO
 		boardGrid.getChildren().clear();
-
-		for (int row = 0; row < rows; row++) {
-			for (int column = 0; column < columns; column++) {
-				var cell = new Pane();
-
-				if (rows == columns) {
-					cell.prefWidthProperty().bind(this.widthProperty().divide(columns));
-					cell.prefHeightProperty().bind(this.widthProperty().divide(row));
-				} else if (rows < columns) {
-					cell.prefWidthProperty().bind(this.widthProperty().divide(columns));
-					cell.prefHeightProperty().bind(this.widthProperty().divide(columns));
+		// **CICLO FOR DOBLE QUE RECORRE FILAS Y COLUMNAS HASTA FINALIZAR
+		for (int fila = 0; fila < filas; fila++) {
+			for (int columna = 0; columna < columnas; columna++) {
+				// **SI SE CUMPLEN LOS DOS CICLOS FOR TANTO EN FILAS Y COLUMNAS CREAMOS UN NUEVO
+				// OBJETO PANE(CONTENEDOR)-SERA UNA NUEVA CELDA DEL ESCENARIO (CUADRICULA)
+				var celda = new Pane();
+				// **DENTRO DEL DOBLE CICLO SI FILAS ES IGUAL A COLUMNAS
+				if (filas == columnas) {
+					// **EL ANCHO DE LA CELDA SERA LA DIVISION DEL ANCHO DE LA CUADRICULA POR EL
+					// NUMERO DE COLUMNAS
+					celda.prefWidthProperty().bind(this.widthProperty().divide(columnas));
+					// **EL ALTO DE LA CELDA SERA IGUAL A LA ITERACION DE FILA QUE ES CRECIENTE EN
+					// CADA ITERACION
+					celda.prefHeightProperty().bind(this.widthProperty().divide(fila));
+				} else if (filas < columnas) {
+					// **EN CASO DE QUE LAS FILAS SEAN MENORES A LA COLUMNA
+					// **TANTO EL ANCHO COMO EL ALTO SE DIVIDEN SOBRE EL NUMERO DE COLUMNAS
+					celda.prefWidthProperty().bind(this.widthProperty().divide(columnas));
+					celda.prefHeightProperty().bind(this.widthProperty().divide(columnas));
 				} else {
-					cell.prefWidthProperty().bind(this.heightProperty().divide(rows));
-					cell.prefHeightProperty().bind(this.heightProperty().divide(rows));
+					// **SI LAS FILAS SON MAYORES A LAS COLUMNAS
+					// **TANTO EL ANCHO COMO EL ALTO DIVIDO SOBRE EL NUMERO DE FILAS
+					celda.prefWidthProperty().bind(this.heightProperty().divide(filas));
+					celda.prefHeightProperty().bind(this.heightProperty().divide(filas));
 				}
-
-				boardGrid.add(cell, column, row);
+				// **AL INICIO BORRAMOS CADA CUADRICULAS DEL BOARD
+				// **AHORA ADICIONAMOS EL CONTENEDOR DE NOMBRE CELDA A LA COLUMNA Y FILA
+				// ESPECIFICADA
+				// **ESTO EN CADA ITERACION DEL BUBLE HASTA QUE RECORRA TODAS LAS FILAS Y
+				// COLUMNAS
+				boardGrid.add(celda, columna, fila);
 			}
 		}
 	}
 
-	
-	
 	@Override
 	public void onBoardChange(Board updatedBoard) {
 		var matrix = updatedBoard.getBoard();
@@ -153,9 +174,9 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 		int columnMargin = rows - columns > 1 ? (rows - columns) / 2 : 0;
 		int rowMargin = columns - rows > 1 ? (columns - rows) / 2 : 0;
 
-		if (!isBoardInitialized) {
+		if (!inicializarBoard) {
 			// Create bigger grid to align the board
-			initializeBoardGrid(rows + rowMargin, columns + columnMargin);
+			inicializarBoardGrid(rows + rowMargin, columns + columnMargin);
 		}
 
 		var len = boardGrid.getChildren().size();
@@ -241,7 +262,7 @@ public class PaneJuego extends BackgroundEscena implements PortalEventos {
 
 	@Override
 	public void onFinishLevel(int levelNum) {
-		isBoardInitialized = false;
+		inicializarBoard = false;
 
 		var dialogBox = new CajaDialogo("MUY BIEN!", Color.BLACK);
 

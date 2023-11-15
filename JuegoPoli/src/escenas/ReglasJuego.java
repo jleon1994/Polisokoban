@@ -69,5 +69,6 @@ public class ReglasJuego extends BackgroundEscena {
 		contenedorControles.getChildren().addAll(controles, contenidoControles);
 		contenedor.getChildren().addAll(boton, objetivoContenedor, contenedorControles);
 		//**POR HERENCIA DAMOS COMO CONTENEDOR CONTENEDOR
+		this.setCenter(contenedor);
 	}
 }
