@@ -48,6 +48,13 @@ public class MenuPrincipal extends BackgroundEscena {
 		nosotros.setOnAction(e -> {
 			primaryStage.getScene().setRoot(new Nosotros(primaryStage));
 		});
+		
+		// **INSTANCIA: OBJETO BOTON (CLASE4)-LO DIRECCIONAMOS CON CLIK A
+				// NOSOTROS (CLASE7)
+				var prueba = new Botones("NOSOTROS").getBoton();
+				prueba.setOnAction(e -> {
+					primaryStage.getScene().setRoot(new Nosotros(primaryStage));
+				});
 
 		// **INSTANCIA: OBJETO TEXTO - ESTILOS CSS
 		var textoMain = new Text("POLISOKOBAN");
@@ -62,7 +69,7 @@ public class MenuPrincipal extends BackgroundEscena {
 		contenedor.getChildren().addAll(
 				//new Logos(new Image(getClass().getResourceAsStream("/sprites/LogoPoli.png"))).getLogoPoli(),
 				new Logos(new Image(getClass().getResourceAsStream("/sprites/man2.png"))).getimageMan(), textoMain,textosubMain,
-				start, reglasJuego, nosotros);
+				start, reglasJuego, nosotros, prueba);
 
 	}
 
