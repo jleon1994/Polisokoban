@@ -1,7 +1,12 @@
 package motor;
 
+//****************//
+//**--CLASE13**--//
+//**************//
+
+//**CLASE TIPOENTIDAD ES UNA ENUMERACION QUE DEFINE LOS POSIBLES TIPOS DE ENTIDADES EN EL JUEGO
 public enum TipoEntidad {
-	EMPTY_SPOT,
-	  OBSTACLE,
-	  PLAYER
+	EMPTY_SPOT,//LUGARES VACIOS
+	  OBSTACLE,//OBSTACULOS
+	  PLAYER//JUGADOR
 }
